@@ -5,7 +5,7 @@ const Course = require('../models/course')
 const router = Router()
 
 router.get('/', async (req, res) => {
-  const courses = await Course.getAll()
+  const courses = await Course.find().lean()
   res.render('courses', {
     title: 'Courses',
     isCourses: true,
@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/:id', async (req, res) => {
-  const course = await Course.getById(req.params.id)
+  const course = await Course.findById(req.params.id).lean()
   res.render('course', {
     layout: 'empty',
     title: `Course ${course.title}`,
@@ -28,7 +28,8 @@ router.get('/:id/edit', async (req, res) => {
     return res.redirect('/')
   }
 
-  const course = await Course.getById(req.params.id)
+  //const course = await Course.findById({_id: req.params.id}).lean();
+  const course = await Course.findById(req.params.id).lean()
   res.render('course-edit', {
     title: `Edit ${course.title}`,
     course
@@ -37,7 +38,9 @@ router.get('/:id/edit', async (req, res) => {
 
 //save edited course
 router.post('/edit', async (req, res) => {
-  await Course.update(req.body)
+  const {id} = req.body
+  delete req.body.id 
+  await Course.findByIdAndUpdate(id, req.body).lean()
   res.redirect('/courses')
 })
 
