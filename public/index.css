@@ -1,3 +1,7 @@
+nav {
+  background-color: #6ea7eeb0;
+}
+
 .nav-wrapper {
   padding: 0 2rem;
 }
@@ -17,10 +21,11 @@
   margin-bottom: 2rem;
 }
 
-/* .course img {
+.course img {
   max-width: 600px;
   height: auto;
-} */
+  object-fit: cover;
+}
 
 .course .price.big {
   font-size: 2.5rem;
@@ -30,4 +35,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.course-form {
+  margin-bottom: 2rem;
 }
