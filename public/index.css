@@ -48,3 +48,7 @@ nav {
 .course-form {
   margin-bottom: 2rem;
 }
+
+.card.orders {
+  width: auto;
+}
