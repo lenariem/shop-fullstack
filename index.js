@@ -28,7 +28,7 @@ app.set('views', 'views')
 //to have always active user with given id
 app.use(async(req, res, next) => {
   try {
-    const user = await User.findById('5fbab99405e0904720df1ffb')
+    const user = await User.findById('5fbbde6f5fe9bb4b600f7dfb')
     req.user = user
     next()
   } catch(err) {

@@ -26,7 +26,7 @@ if ($cart) {
                             <td>${course.title}</td>
                             <td>${course.count}</td>
                             <td>
-                                <button class="btn btn-small js-remove" data-id="${course.id}">Delete</button>
+                                <button class="btn btn-small js-remove" data-id="${course._id}">Delete</button>
                             </td>
                         </tr>
                         `
