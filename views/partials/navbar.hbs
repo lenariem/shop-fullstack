@@ -15,29 +15,37 @@
         <li><a href="/courses">Courses</a></li>
       {{/if}}
 
-      {{#if isAdd}}
-        <li class="active"><a href="/add">Add Course</a></li>
-      {{else}}
-        <li><a href="/add">Add Course</a></li>
+    {{!-- routes only for authenticated user --}}
+      {{#if isAuth}}
+          {{#if isAdd}}
+            <li class="active"><a href="/add">Add Course</a></li>
+          {{else}}
+            <li><a href="/add">Add Course</a></li>
+          {{/if}} 
+
+          {{#if isCart}}
+            <li class="active"><a href="/cart">Cart</a></li>
+          {{else}}
+            <li><a href="/cart">Cart</a></li>
+          {{/if}} 
+
+          {{#if isOrder}}
+            <li class="active"><a href="/orders">Orders</a></li>
+          {{else}}
+            <li><a href="/orders">Orders</a></li>
+
+          {{!-- Log out --}}
+          <li><a href="/auth/logout">Log Out</a></li>
       {{/if}} 
 
-      {{#if isCart}}
-        <li class="active"><a href="/cart">Cart</a></li>
       {{else}}
-        <li><a href="/cart">Cart</a></li>
-      {{/if}} 
-
-      {{#if isOrder}}
-        <li class="active"><a href="/orders">Orders</a></li>
-      {{else}}
-        <li><a href="/orders">Orders</a></li>
-      {{/if}} 
-
-       {{#if isLogin}}
+        {{!-- for not auth users --}}
+        {{#if isLogin}}
         <li class="active"><a href="/auth/login#login">Log In</a></li>
-      {{else}}
-        <li><a href="/auth/login#login">Log In</a></li>
-      {{/if}} 
+        {{else}}
+          <li><a href="/auth/login#login">Log In</a></li>
+        {{/if}} 
+      {{/if}}
       
     </ul>
   </div>
