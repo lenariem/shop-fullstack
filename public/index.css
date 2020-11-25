@@ -52,3 +52,7 @@ nav {
 .card.orders {
   width: auto;
 }
+
+.auth {
+  padding-top: 1rem;
+}
