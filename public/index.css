@@ -1,3 +1,4 @@
+/* main screen */
 nav {
   background-color: #6ea7eeb0;
 }
@@ -6,6 +7,18 @@ nav {
   padding: 0 2rem;
 }
 
+.logo {
+  width: 70px;
+  margin-left: 30px;
+}
+
+.bg {
+  display: block;
+  width: 38%;
+  margin: 0 auto;
+}
+
+/* courses */
 .price {
   font-size: 2rem;
 }
@@ -49,10 +62,13 @@ nav {
   margin-bottom: 2rem;
 }
 
+/* orders */
 .card.orders {
   width: auto;
 }
 
+/* auth */
 .auth {
   padding-top: 1rem;
 }
+

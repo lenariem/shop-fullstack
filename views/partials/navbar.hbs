@@ -1,6 +1,6 @@
 <nav>
   <div class="nav-wrapper">
-    <a href="#" class="brand-logo">Courses App</a>
+    <a href="/" class="brand-logo"><img src="https://cdn.pixabay.com/photo/2014/03/25/16/27/literature-297187__340.png" alt="logo" class="logo" title="home page"></a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
 
       {{#if isHome}}
@@ -33,11 +33,10 @@
             <li class="active"><a href="/orders">Orders</a></li>
           {{else}}
             <li><a href="/orders">Orders</a></li>
+          {{/if}}
 
           {{!-- Log out --}}
           <li><a href="/auth/logout">Log Out</a></li>
-      {{/if}} 
-
       {{else}}
         {{!-- for not auth users --}}
         {{#if isLogin}}

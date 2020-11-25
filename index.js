@@ -75,16 +75,6 @@ async function start() {
     })
     console.log(`Connected to DB successfully`)
 
-    /* const candidate = await User.findOne()
-    if(!candidate) {
-      const user = new User({
-        email: "user1@mail.com",
-        name: "User1",
-        cart: {items: []}
-      })
-      await user.save()
-    }
- */
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`)
     })
