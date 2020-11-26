@@ -1,6 +1,7 @@
 const express = require('express')
-const mongoose = require('mongoose')
 const path = require('path')
+const csrf = require('csurf')
+const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 const Handlebars = require('handlebars')
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
@@ -50,6 +51,9 @@ app.use(session({
   saveUninitialized: false,
   store
 }))
+
+//for CSRF token creation and validation. This middleware adds a req.csrfToken() function to make a token which should be added to requests which mutate state, within a hidden form field, query-string etc. This token is validated against the visitor's session or csrf cookie.
+app.use(csrf())
 
 //my middleware
 app.use(varMiddleware)
