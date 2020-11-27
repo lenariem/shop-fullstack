@@ -9,6 +9,9 @@ const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-acce
 const session = require('express-session')
 const MongoStore = require('connect-mongodb-session')(session)
 
+const keys = require('./keys')
+const PORT = process.env.PORT || 3000
+
 const homeRoutes = require('./routes/home')
 const addRoutes = require('./routes/add')
 const coursesRoutes = require('./routes/courses')
@@ -18,8 +21,6 @@ const authRoutes = require('./routes/auth')
 
 const varMiddleware = require('./middleware/variables')
 const userMiddleware = require('./middleware/user')
-
-const MONGODB_URI = `mongodb+srv://new_user1:pamTARs84L@cluster0.uiclr.mongodb.net/courses_shop`
 
 const app = express()
 
@@ -31,8 +32,8 @@ const hbs = exphbs.create({
 
 const store = new MongoStore({
   collection: 'sessions',
-  uri: MONGODB_URI
-  
+  uri: keys.MONGODB_URI
+
 })
 
 app.engine('hbs', hbs.engine)
@@ -48,7 +49,7 @@ app.use(express.urlencoded({extended: true}))
 
 //auth session
 app.use(session({
-  secret: 'some secret value',
+  secret: keys.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
   store
@@ -72,12 +73,10 @@ app.use('/cart', cartRoutes)
 app.use('/orders', ordersRoutes)
 app.use('/auth', authRoutes)
 
-const PORT = process.env.PORT || 3000
-
 //connection to DB and port
 async function start() {
   try {
-    await mongoose.connect(MONGODB_URI, {
+    await mongoose.connect(keys.MONGODB_URI, {
       useUnifiedTopology: true,
       useNewUrlParser: true,
       useFindAndModify: false

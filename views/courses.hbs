@@ -4,7 +4,7 @@
 {{#if courses.length}}
 {{#each courses}}
  <div class="row">
-    <div class="col {{!-- s12 m7 l4 --}}">
+    <div class="col">
         <div class="card">
             <div class="card-image">
                 <img src="{{img}}" alt="{{title}}" class="course-image">
@@ -18,8 +18,8 @@
                 {{#if @root.isAuth}}
                     <a href="/courses/{{_id}}/edit?allow=true">Edit</a>
                     <form action="/cart/add" method="POST">
+                        <input type="hidden" name="_csrf" value="{{@root.csrf}}">       
                         <input type="hidden" name="id" value="{{_id}}">
-                        <input type="hidden" name="_csrf" value="{{@root.csrf}}">
                         <button type="submit" class="btn btn-primary">Buy</button>
                     </form>
                 {{/if}}
