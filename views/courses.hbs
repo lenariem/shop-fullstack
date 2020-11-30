@@ -19,7 +19,7 @@
                 {{#if @root.isAuth}}
 
                 {{#ifeq userId._id @root.userId}}
-                    <a href="/courses/{{_id}}/edit?allow=true" style="color: #3d5afe">Edit your course</a>
+                    <a href="/courses/{{_id}}/edit?allow=true" style="color:#3d5afe;margin-right:0;">Edit your course</a>
                 {{/ifeq}}
 
                 {{#ifNoteq userId._id @root.userId}}

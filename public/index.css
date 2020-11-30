@@ -46,6 +46,7 @@ nav {
 
 .card {
   width: 300px;
+  text-align: center;
 }
 .course-image{
   height: 170px;
