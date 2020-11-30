@@ -4,10 +4,10 @@ const auth = require('../middleware/auth')
 const router = Router()
 
 function mapCartItems(cart) {
-    return cart.items.map(course => ({
-        ...course.courseId._doc,
-        id: course.courseId.id,
-        count: course.count
+    return cart.items.map(c => ({
+        ...c.courseId._doc,
+        id: c.courseId.id,
+        count: c.count
     }))
 } 
 

@@ -31,7 +31,7 @@ if ($cart) {
             const id = event.target.dataset.id
             const csrf = event.target.dataset.csrf
         
-            fetch('cart/remove/' + id, {
+            fetch('/cart/remove/' + id, {
                 method: 'delete',
                 headers: {
                     'X-XSRF-TOKEN': csrf
@@ -45,7 +45,7 @@ if ($cart) {
                             <td>${course.title}</td>
                             <td>${course.count}</td>
                             <td>
-                                <button class="btn btn-small js-remove" data-id="${course._id}">Delete</button>
+                                <button class="btn btn-small red darken-4 js-remove" data-id="${course._id}" data-csrf="${csrf}">Delete</button>
                             </td>
                         </tr>
                         `
