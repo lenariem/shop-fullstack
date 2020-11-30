@@ -18,22 +18,26 @@ nav {
   margin: 0 auto;
 }
 
-/* courses */
-.price {
-  font-size: 2rem;
-}
+
+/*one course*/
 .course{
-  width: 20%;
+  width: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 40%;
-  margin-top: 5%;
+  margin: 1% auto;
 }
 .course h1 {
   margin-bottom: 2rem;
 }
 
+.course img {
+  max-height: 50vh;
+}
+/* courses */
+.price {
+  font-size: 2rem;
+}
 .coursesContainer{
   display: flex;
   flex-wrap: wrap;
