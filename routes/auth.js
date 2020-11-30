@@ -1,11 +1,13 @@
 const {Router} = require('express')
 const bcrypt = require('bcryptjs')
 const crypto = require('crypto')
+const {validationResult} = require('express-validator')
 const sgMail = require('@sendgrid/mail')
 const User = require('../models/user')
 const keys = require('../keys')
 const reqEmail = require('../emails/registration')
 const resetEmail = require('../emails/reset')
+const {registerValidators} = require('../utils/validators')
 const router = Router()
 
 sgMail.setApiKey(keys.SENDGRID_API_KEY)
@@ -59,15 +61,21 @@ router.get('/logout', async (req, res) => {
 
 
 //register new users
-router.post('/register', async(req, res) => {
+router.post('/register', registerValidators, async(req, res) => {
     try {
-        const {email, password, repeat, name} = req.body
-        const candidate = await User.findOne({email})
+        const {email, password, name} = req.body
+        /* const candidate = await User.findOne({email}) */
 
-        if (candidate) {
+        const errors = validationResult(req)
+        if(!errors.isEmpty()) {
+            req.flash('registrationError', errors.array()[0].msg)
+            return res.status(422).redirect('/auth/login#register')
+        }
+
+        /* if (candidate) {
             req.flash('registrationError', 'User with this email already exists')
             res.redirect('/auth/login#register')
-        } else {
+        } else { */
             const hashPassword = await bcrypt.hash(password, 10)
             const user = new User({ email, name, password: hashPassword, cart: {items: []} })
             await user.save()
@@ -83,7 +91,7 @@ router.post('/register', async(req, res) => {
                     console.error(error)
                 })
             
-        }
+        /* } */
     } catch(err) {
         console.log(err)
     }
