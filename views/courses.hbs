@@ -1,4 +1,4 @@
-<h1>Courses</h1>
+<h1 class="center-align">Courses</h1>
 
 <div class="coursesContainer">
 {{#if courses.length}}
@@ -19,13 +19,16 @@
                 {{#if @root.isAuth}}
 
                 {{#ifeq userId._id @root.userId}}
-                    <a href="/courses/{{_id}}/edit?allow=true">Edit your course</a>
+                    <a href="/courses/{{_id}}/edit?allow=true" style="color: #3d5afe">Edit your course</a>
                 {{/ifeq}}
+
+                {{#ifNoteq userId._id @root.userId}}
                     <form action="/cart/add" method="POST">
                         <input type="hidden" name="_csrf" value="{{@root.csrf}}">       
                         <input type="hidden" name="id" value="{{_id}}">
                         <button type="submit" class="btn btn-primary">Buy</button>
                     </form>
+                {{/ifNoteq}}
                 {{/if}}
             </div>
         </div>

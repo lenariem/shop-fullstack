@@ -50,6 +50,7 @@ nav {
 .course-image{
   height: 170px;
   object-fit: contain;
+  padding: 1%;
 }
 
 .course .price.big {
@@ -60,6 +61,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 65px;
 }
 
 .course-form {
