@@ -1,17 +1,12 @@
 const {Router} = require('express')
 const bcrypt = require('bcryptjs')
-const nodemailer = require('nodemailer')
-const sendgrid = require('nodemailer-sendgrid-transport')
+const crypto = require('crypto')
 const sgMail = require('@sendgrid/mail')
 const User = require('../models/user')
 const keys = require('../keys')
 const reqEmail = require('../emails/registration')
+const resetEmail = require('../emails/reset')
 const router = Router()
-
-
-/* const transporter = nodemailer.createTransport(sendgrid({
-    auth: {api_key: keys.SENDGRID_API_KEY }
-})) */
 
 sgMail.setApiKey(keys.SENDGRID_API_KEY)
 
@@ -62,6 +57,7 @@ router.get('/logout', async (req, res) => {
     })
 })
 
+
 //register new users
 router.post('/register', async(req, res) => {
     try {
@@ -76,8 +72,7 @@ router.post('/register', async(req, res) => {
             const user = new User({ email, name, password: hashPassword, cart: {items: []} })
             await user.save()
             
-            //better after redirect
-            //await transporter.sendMail(reqEmail(email))
+            //send mail after registration
             sgMail
                 .send(reqEmail(email))
                 .then(() => {
@@ -89,6 +84,106 @@ router.post('/register', async(req, res) => {
                 })
             
         }
+    } catch(err) {
+        console.log(err)
+    }
+})
+
+//reset password
+router.get('/reset', (req, res) => {
+    res.render('auth/reset', {
+        title: 'Forgot password?',
+        error: req.flash('error')
+    })
+})
+
+//set a new password
+router.get('/password/:token', async(req, res) => {
+    if (!req.params.token) {
+        //for security if token is absent redirect
+        return res.redirect('/auth/login')
+    }
+
+    try {
+        const user = await User.findOne({
+            resetToken: req.params.token, 
+            //check if token still valid $gt-greater than
+            resetTokenExpiration: {$gt: Date.now()}
+        })
+
+        if(!user) {
+            return res.redirect('/auth/login')
+        } else {
+            res.render('auth/password', {
+                title: 'Recovery access',
+                error: req.flash('error'),
+                userId: user._id.toString(),
+                token: req.params.token
+            })
+        }
+    } catch(err) {
+        console.log(err)
+    }
+    
+})
+
+router.post('/reset', (req, res) => {
+    try {
+        crypto.randomBytes(32, async (err, buffer) => {
+            if(err) {
+                req.flash('error', 'Sorry, something went wrong. We are working on it. Please try one more in some minutes')
+               res.redirect('/auth/reset')
+            }
+
+            const token = buffer.toString('hex')
+            const candidate = await User.findOne({email: req.body.email})
+
+            if (candidate) {
+                candidate.resetToken = token
+                //token will be expired after one hour
+                candidate.resetTokenExpiration = Date.now() + 60 * 60 * 1000 
+                await candidate.save()
+                
+                //send email
+                sgMail
+                .send(resetEmail(candidate.email, token))
+                .then(() => {
+                    console.log('Check your email')
+                    res.redirect('/auth/login')
+                })
+                .catch((error) => {
+                    console.error(error)
+                })
+            } else {
+                req.flash('error', 'User with this email is not found')
+                res.redirect('/auth/reset')
+            }
+        })
+    } catch(err) {
+        console.log(err)
+    }
+})
+
+
+router.post('/password', async(req, res) => {
+    try {
+        const user = await User.findOne({
+            _id: req.body.userId,
+            resetToken: req.body.token,
+            resetTokenExpiration: {$gt: Date.now()}
+        })
+
+        if(user) {
+            user.password = await bcrypt.hash(req.body.password, 10)
+            user.resetToken = undefined,
+            user.resetTokenExpiration = undefined
+            await user.save()
+            res.redirect('/auth/login')
+        } else {
+            req.flash('loginError', 'Time for recovery is expired, please try again')
+            res.redirect('/auth/login')
+        }
+
     } catch(err) {
         console.log(err)
     }

@@ -1,5 +1,5 @@
 const {Schema,model} = require('mongoose')
-const course = require('./course')
+//const course = require('./course')
 
 const userSchema = new Schema({
   email: {
@@ -11,6 +11,8 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
+  resetToken: String,
+  resetTokenExpiration: Date,
   cart: {
     items: [{
       count: {

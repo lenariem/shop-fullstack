@@ -8,7 +8,7 @@ module.exports = function (user_email) {
         html: `
             <h1>Welcome to our shop!</h1>
             <p>You created account successfully with email - ${user_email}!</p>
-            <hr>
+            <hr />
             <a href="${keys.BASE_URL}">Courses-shop</a>
         `
     }
