@@ -9,7 +9,10 @@ const courseSchema = new Schema({
         type: Number,
         required: true
     },
-    img: String,
+    img: {
+        type: String,
+        required: true
+    },
     userId: {
         type: Schema.Types.ObjectId,
         ref: 'User'

@@ -31,5 +31,5 @@ exports.registerValidators = [
             }
             return true
         })
-        
 ]
+
