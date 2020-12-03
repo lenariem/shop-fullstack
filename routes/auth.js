@@ -80,6 +80,7 @@ router.post('/register', registerValidators, async(req, res) => {
                 .send(reqEmail(email))
                 .then(() => {
                     console.log('Email sent')
+                    const successRegistr = true
                     res.redirect('/auth/login#login')
                 })
                 .catch((error) => {
