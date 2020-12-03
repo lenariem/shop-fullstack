@@ -33,3 +33,15 @@ exports.registerValidators = [
         })
 ]
 
+
+exports.courseValidators = [
+    body('title')
+        .isLength({min: 3}).withMessage('Title is too short, please enter at least 3 characters')
+        .isLength({max: 175}).withMessage('Title is too long, please 175 characters maximum'),
+    body('price')
+        .isNumeric().withMessage('Price must be a number')
+        .isLength({max: 6}).withMessage('Price is too long, please 6 numbers maximum'),
+    body('img', 'Please enter a valid url')
+        .isURL()
+]
+
