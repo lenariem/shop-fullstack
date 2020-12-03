@@ -21,6 +21,7 @@ const authRoutes = require('./routes/auth')
 
 const varMiddleware = require('./middleware/variables')
 const userMiddleware = require('./middleware/user')
+const errorMiddleware = require('./middleware/error')
 
 const app = express()
 
@@ -73,6 +74,9 @@ app.use('/courses', coursesRoutes)
 app.use('/cart', cartRoutes)
 app.use('/orders', ordersRoutes)
 app.use('/auth', authRoutes)
+
+//error 404 handler, after all routers
+app.use(errorMiddleware)
 
 //connection to DB and port
 async function start() {
