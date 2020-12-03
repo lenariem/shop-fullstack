@@ -29,12 +29,19 @@
 
         <p><strong>Price: </strong><span class="price">{{price}}</span></p>
 
-        <form action="/orders" method="POST">
+        <div class="cart-btns">
+            <form action="/orders" method="POST">
 
-            <input type="hidden" name="_csrf" value="{{csrf}}">
-            
-            <button type="submit" class="btn">Buy</button>
-        </form>
+                <input type="hidden" name="_csrf" value="{{csrf}}">
+                
+                <button type="submit" class="btn">Buy</button>
+            </form>
+
+
+            <form action="/courses" class="shopping">
+                <button class="btn big  indigo accent-3">Continue shopping</button>
+            </form>
+    </div>
     {{else}}
         <p>Your cart is empty</p>
     {{/if}}

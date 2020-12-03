@@ -79,6 +79,16 @@ nav {
   padding-top: 1rem;
 }
 
+/* cart */
+.cart-btns {
+  display: flex;
+  
+}
+
+.shopping{
+ margin-left: 25%;
+}
+
 
 /* errors */
 .alert {
