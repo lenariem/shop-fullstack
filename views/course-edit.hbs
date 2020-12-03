@@ -24,6 +24,12 @@
     <span class="helper-text" data-error="Please, enter course URL"></span>
   </div>
 
+  <div class="input-field">
+    <input id="theme" name="theme" type="text" class="validate" required value="{{course.theme}}">
+    <label for="theme">Theme</label>
+    <span class="helper-text" data-error="Please, enter course theme"></span>
+  </div>
+
   <input type="hidden" name="id" value="{{course._id}}">
   <input type="hidden" name="_csrf" value="{{csrf}}">
 

@@ -42,6 +42,9 @@ exports.courseValidators = [
         .isNumeric().withMessage('Price must be a number')
         .isLength({max: 6}).withMessage('Price is too long, please 6 numbers maximum'),
     body('img', 'Please enter a valid url')
-        .isURL()
+        .isURL(),
+    body('theme')
+        .isLength({min: 2}).withMessage('Theme is too short, please enter at least 2 characters')
+        .isLength({max: 80}).withMessage('Title is too long, please 80 characters maximum')
 ]
 

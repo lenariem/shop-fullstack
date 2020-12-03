@@ -12,6 +12,9 @@
           <p class="alert">{{loginError}}</p>
         {{/if}}
 
+      {{#if successRegistr}}
+          <p class="alert">Success!</p>
+        {{/if}}
         
       <h2>Welcome to the shop</h2>
       <form action="/auth/login" method="POST">

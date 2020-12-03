@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
   try {
     const courses = await Course.find().lean()
       .populate('userId', 'email name')
-      .select('price title img')
+      .select('price title img author theme')
 
     res.render('courses', {
     title: 'Courses',
