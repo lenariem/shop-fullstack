@@ -18,6 +18,7 @@ const coursesRoutes = require('./routes/courses')
 const cartRoutes = require('./routes/cart')
 const ordersRoutes = require('./routes/orders')
 const authRoutes = require('./routes/auth')
+const profileRoutes = require('./routes/profile')
 
 const varMiddleware = require('./middleware/variables')
 const userMiddleware = require('./middleware/user')
@@ -74,6 +75,7 @@ app.use('/courses', coursesRoutes)
 app.use('/cart', cartRoutes)
 app.use('/orders', ordersRoutes)
 app.use('/auth', authRoutes)
+app.use('/profile', profileRoutes)
 
 //error 404 handler, after all routers
 app.use(errorMiddleware)

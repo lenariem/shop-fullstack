@@ -1,0 +1,40 @@
+<h1>Profile</h1>
+
+<div class="row">
+    <div class="col s-6">
+        <img class="avatar" src="https://cdn.pixabay.com/photo/2015/01/22/15/13/businessman-607834__340.png" alt="avatar">
+
+        <p>Avatar is not chosen</p>
+    </div>
+
+
+    <div class="col s-6">
+        <form action="/profile" method="POST">
+            <p>Your email: <strong>{{user.email}}</strong></p>
+            <div class="input-field">
+                <input id="name" name="name" type="text" class="validate" required value={{user.name}}>
+                <label for="name">Your Name &#9998; :</label>
+                <span class="helper-text" data-error="Please, enter a name"></span>
+            </div>
+
+            <div class="file-field input-field">
+                <div class="btn indigo">
+                    <span>Download Avatar</span>
+                    <input type="file" name="avatar">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                </div>
+            </div>
+
+        <input type="hidden" name="_csrf" value="{{csrf}}">
+
+         <button type= "submit" class="btn">Save changes &#10004;</button>
+
+        </form>
+    </div>
+</div>
+
+   
+   
+  
