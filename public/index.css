@@ -1,6 +1,8 @@
 /* main screen */
 nav {
   background-color: #6ea7eeb0;
+  text-shadow:  2px 8px 6px rgba(0,0,0,0.2),
+                0px -5px 35px rgba(255,255,255,0.3); 
 }
 
 .nav-wrapper {
@@ -14,9 +16,48 @@ nav {
 
 .bg {
   display: block;
-  width: 38%;
+  width: 32%;
   margin: 0 auto;
 }
+
+/* title */
+.home-title {
+  margin-top: 0.5%;
+  padding: 50px 20px 50px 170px;
+  text-align: center;
+} 
+.home-title h3 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  position: relative;
+  color: #587493;
+  font-size: 2.5em;
+  font-weight: normal;
+  display: inline-block;
+  margin: 0;
+  line-height: 1;
+  padding: 8px 20px 8px 2px;
+  border-top: 4px solid;
+}
+.home-title h3:before {
+  content: "Welcome";
+  position: absolute;
+  top: -15px;
+  left: -200px;
+  font-size: 1.5em;
+  transform: rotate(-25deg);
+  font-family: 'Marck Script', cursive;
+}
+.home-title h3:after {
+  content: ""; 
+  position: absolute;
+  width: 120%;
+  height: 4px;
+  right: 0;
+  bottom: -4px;
+  background: #587493;
+}
+
 
 
 /*one course*/

@@ -13,7 +13,7 @@
             <p>Your email: <strong>{{user.email}}</strong></p>
             <div class="input-field">
                 <input id="name" name="name" type="text" class="validate" required value={{user.name}}>
-                <label for="name">Your Name &#9998; :</label>
+                <label for="name">Your Name <span>&#9998;</span> :</label>
                 <span class="helper-text" data-error="Please, enter a name"></span>
             </div>
 
@@ -29,7 +29,7 @@
 
         <input type="hidden" name="_csrf" value="{{csrf}}">
 
-         <button type= "submit" class="btn">Save changes &#10004;</button>
+         <button type= "submit" class="btn">Save changes <span>&#10004;</span></button>
 
         </form>
     </div>
