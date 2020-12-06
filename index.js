@@ -37,7 +37,6 @@ const hbs = exphbs.create({
 const store = new MongoStore({
   collection: 'sessions',
   uri: keys.MONGODB_URI
-
 })
 
 app.engine('hbs', hbs.engine)
@@ -45,8 +44,9 @@ app.set('view engine', 'hbs')
 app.set('views', 'views')
 
 //MIDDLEWARE
-//to use folder static, address to files in it "/name"
+//to use folder static, address to files in it "/<name>",or like files in root without "/<name>""
 app.use(express.static(path.join(__dirname, 'public')))
+app.use('/images', express.static(path.join(__dirname, 'images')))
 
 //to use req.body
 app.use(express.urlencoded({extended: true}))

@@ -5,7 +5,7 @@
         {{#if user.avatarUrl}}
             <img 
                 class="avatar" 
-                src="{{user.avatarUrl}}" 
+                src="/{{user.avatarUrl}}" 
                 alt="avatar-{{user.name}}"
             >
         {{else}}
@@ -15,10 +15,11 @@
 
 
     <div class="col s-6">
-        <form action="/profile" method="POST">
+        <form action="/profile" method="POST" enctype="multipart/form-data">
             <p>Your email: <strong>{{user.email}}</strong></p>
+            
             <div class="input-field">
-                <input id="name" name="name" type="text" class="validate" min="1" max="20" required value={{user.name}}>
+                <input id="name" name="name" type="text" class="validate" min="1" max="20" required value="{{user.name}}">
                 <label for="name">Your Name <span>&#9998;</span> :</label>
                 <span class="helper-text" data-error="Please, enter a name"></span>
             </div>
@@ -33,9 +34,9 @@
                 </div>
             </div>
 
-        <input type="hidden" name="_csrf" value="{{csrf}}">
+            <input type="hidden" name="_csrf" value="{{csrf}}">
 
-         <button type= "submit" class="btn avatar-btn">Save changes <span>&#10004;</span></button>
+            <button type= "submit" class="btn avatar-btn">Save changes <span>&#10004;</span></button>
 
         </form>
     </div>
