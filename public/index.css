@@ -16,7 +16,7 @@ nav {
 
 .bg {
   display: block;
-  width: 32%;
+  width: 30%;
   margin: 0 auto;
 }
 
@@ -142,8 +142,15 @@ nav {
 }
 
 /* avatar in profile */
+.avatar-wrapper {
+  margin-top: 5%;
+}
+
 .avatar {
   max-width: 300px;
   height: auto;
 }
 
+.avatar-btn{
+  margin-top: 57px;
+}

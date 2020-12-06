@@ -23,6 +23,7 @@ const profileRoutes = require('./routes/profile')
 const varMiddleware = require('./middleware/variables')
 const userMiddleware = require('./middleware/user')
 const errorMiddleware = require('./middleware/error')
+const fileMiddleware = require('./middleware/file')
 
 const app = express()
 
@@ -57,6 +58,9 @@ app.use(session({
   saveUninitialized: false,
   store
 }))
+
+//to download file for avatar
+app.use(fileMiddleware.single('avatar'))
 
 //for CSRF token creation and validation. This middleware adds a req.csrfToken() function to make a token which should be added to requests which mutate state, within a hidden form field, query-string etc. This token is validated against the visitor's session or csrf cookie.
 app.use(csrf())
