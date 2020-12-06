@@ -144,6 +144,8 @@ nav {
 /* avatar in profile */
 .avatar-wrapper {
   margin-top: 5%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .avatar {
