@@ -12,7 +12,13 @@
             <div class="card-content">
                 <span class="card-title">{{title}}</span>
                 <p class="price">{{price}}</p> 
-                <p style="margin:1%;">Author: <i>{{author}}</i></p>
+                {{#ifeq userId._id @root.userId}}
+                    <p style="margin:1%;">Author: <i><b>You</b></i></p>
+                {{/ifeq}}
+                {{#ifNoteq userId._id @root.userId}}
+                    <p style="margin:1%;">Author: <i>{{author}}</i></p>
+                {{/ifNoteq}}
+    
                 <p>Theme: {{theme}}</p>
             </div>
             <div class="card-action actions">

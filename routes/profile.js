@@ -23,7 +23,9 @@ router.post('/',auth, async(req, res) => {
         }
 
         Object.assign(user, toChange)
+        
         await user.save()
+     
         res.redirect('/profile')
     } catch (err) {
         console.log(err)

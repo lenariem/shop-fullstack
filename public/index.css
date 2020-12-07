@@ -1,12 +1,20 @@
 /* main screen */
 nav {
   background-color: #6ea7eeb0;
-  text-shadow:  2px 8px 6px rgba(0,0,0,0.2),
-                0px -5px 35px rgba(255,255,255,0.3); 
+  text-shadow: 2px 0 2px rgb(41, 88, 175), 
+                0 2px 2px rgb(41, 88, 175), 
+                -2px 0 2px rgb(41, 88, 175), 
+                0 -2px 2px rgb(41, 88, 175);
+  
 }
 
 .nav-wrapper {
   padding: 0 2rem;
+  
+}
+
+nav ul a {
+  font-size: 1.2rem;
 }
 
 .logo {
@@ -143,7 +151,7 @@ nav {
 
 /* avatar in profile */
 .avatar-wrapper {
-  margin-top: 5%;
+  margin-top: 3%;
   display: flex;
   justify-content: space-between;
 }

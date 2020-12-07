@@ -63,3 +63,5 @@ if ($cart) {
 //to init tabs from materialize
 M.Tabs.init(document.querySelectorAll('.tabs'))
 
+
+
