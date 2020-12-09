@@ -27,11 +27,11 @@ router.post('/',auth, async(req, res) => {
         await user.save()
      
         res.redirect('/profile')
+
     } catch (err) {
         console.log(err)
     }
 })
-
 
 
 module.exports = router

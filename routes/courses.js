@@ -6,32 +6,46 @@ const {courseValidators} = require('../utils/validators')
 const router = Router()
 
 function isOwner(course, req) {
-  return course.userId.toString() === req.user._id.toString() 
+  return course.userId.toString() === req.user._id.toString()
 }
 
+
 router.get('/', async (req, res) => {
-  const searchTerm = req.query.search 
+  const searchTerm = req.query.search
   let courses
-
+  
   try {
-    if(searchTerm) {
-      courses = await Course.find({"title": new RegExp(searchTerm, 'i')}).lean()
-      .populate('userId', 'email name')
-      .select('price title img author theme')
-
-    } else {
-       courses = await Course.find().lean()
-      .populate('userId', 'email name')
-      .select('price title img author theme')
+    if (searchTerm) {
+      courses = await Course.find({'$or':
+      [
+        {
+          "title": new RegExp(searchTerm, 'i')
+        },
+        {
+          "theme": new RegExp(searchTerm, 'i')
+        }
+      ]
     }
-    
+      )
+        .populate('userId', 'email name')
+        .select('price title img author theme')
+
+      /* } else if () { */
+        
+
+      } else {
+      courses = await Course.find().lean()
+        .populate('userId', 'email name')
+        .select('price title img author theme')
+    }
+
 
     res.render('courses', {
-    title: 'Courses',
-    isCourses: true,
-    userId: req.user ? req.user._id.toString() : null,
-    courses
-  })
+      title: 'Courses',
+      isCourses: true,
+      userId: req.user ? req.user._id.toString() : null,
+      courses
+    })
   } catch (err) {
     console.log(err)
   }
@@ -60,29 +74,31 @@ router.get('/:id/edit', auth, async (req, res) => {
     const course = await Course.findById(req.params.id).lean()
 
     //to protect router
-    if(!isOwner(course, req)) {
+    if (!isOwner(course, req)) {
       return res.redirect('/courses')
     }
-  
+
     res.render('course-edit', {
       title: `Edit ${course.title}`,
       course
     })
-  } catch(err) {
+  } catch (err) {
     console.log(err)
   }
-  
+
 })
 
 //save edited course
 router.post('/edit', auth, courseValidators, async (req, res) => {
   const errors = validationResult(req)
-  const {id} = req.body
+  const {
+    id
+  } = req.body
   const course = await Course.findById(id)
-  
-  if(!errors.isEmpty()) {
+
+  if (!errors.isEmpty()) {
     const editError = errors.array()[0].msg
-  
+
     return res.status(422).render('course-edit', {
       title: `Edit ${course.title}`,
       editError,
@@ -92,8 +108,8 @@ router.post('/edit', auth, courseValidators, async (req, res) => {
 
   try {
     delete req.body.id
-    
-    if(!isOwner(course, req)) {
+
+    if (!isOwner(course, req)) {
       return res.redirect('/courses')
     }
     Object.assign(course, req.body)
@@ -103,7 +119,7 @@ router.post('/edit', auth, courseValidators, async (req, res) => {
   } catch (err) {
     console.log(err)
   }
-  
+
 })
 
 //delete course
