@@ -10,13 +10,12 @@ function isOwner(course, req) {
 }
 
 router.get('/', async (req, res) => {
- console.log(req.query)
   const searchTerm = req.query.search 
   let courses
 
   try {
     if(searchTerm) {
-      courses = await Course.find({"title": new RegExp(searchTerm)}).lean()
+      courses = await Course.find({"title": new RegExp(searchTerm, 'i')}).lean()
       .populate('userId', 'email name')
       .select('price title img author theme')
 
