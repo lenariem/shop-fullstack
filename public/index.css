@@ -66,7 +66,14 @@ nav ul a {
   background: #587493;
 }
 
-
+/* courses */
+.searchPanel {
+  margin: 3% 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2%;
+}
 
 /*one course*/
 .course{

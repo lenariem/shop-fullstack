@@ -1,5 +1,26 @@
 <h1 class="center-align">Courses</h1>
 
+<div class="searchPanel">
+    <form action="/courses">
+        <button class="btn btn-primary">Show all Courses</button>
+    </form>
+    <form action="/courses">
+        <button class="btn indigo">I am author</button>
+    </form>
+   
+    <form action="/courses">
+        <div class="input-field">
+            <input id="search" name="search" type="text" placeholder="Search" class="validate" max="30">
+            <input type="hidden" name="_csrf" value="{{@root.csrf}}">       
+            <input type="hidden" name="id" value="{{_id}}">
+            <div>
+                <button type="submit">&#x1F50D;</button>
+            </div>
+        </div>
+        
+    </form>
+</div>
+
 <div class="coursesContainer">
 {{#if courses.length}}
 {{#each courses}}
@@ -44,6 +65,6 @@
  </div>
 {{/each}}
 {{else}}
-<p>No courses yet</p>
+    <p>No courses yet</p>
 {{/if}}
 </div>

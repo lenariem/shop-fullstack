@@ -31,6 +31,7 @@ router.post('/', auth, courseValidators, async (req, res) => {
     })
   }
 
+  /* const author = await req.user.populate('name').execPopulate() */
   const course = new Course({
     title: req.body.title,
     price: req.body.price,

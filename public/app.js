@@ -63,5 +63,10 @@ if ($cart) {
 //to init tabs from materialize
 M.Tabs.init(document.querySelectorAll('.tabs'))
 
+/* courses?search=yoursearchter
+ */
+
+ /* req.query => { search: "yourvalue" }
+ */
 
 

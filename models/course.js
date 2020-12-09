@@ -1,4 +1,7 @@
-const {Schema,model} = require('mongoose')
+const {
+    Schema,
+    model
+} = require('mongoose')
 
 const courseSchema = new Schema({
     title: {
@@ -13,7 +16,10 @@ const courseSchema = new Schema({
         type: String,
         required: true
     },
-    author: String,
+    author: String, /* {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }, */
     theme: String,
     userId: {
         type: Schema.Types.ObjectId,
@@ -21,7 +27,7 @@ const courseSchema = new Schema({
     }
 })
 
-courseSchema.method('toClient', function() {
+courseSchema.method('toClient', function () {
     const course = this.toObject()
     course.id = course._id
     delete course._id
