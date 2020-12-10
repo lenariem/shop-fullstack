@@ -4,8 +4,12 @@
     <form action="/courses">
         <button class="btn btn-primary">Show all Courses</button>
     </form>
+    
     <form action="/courses">
-        <button class="btn indigo">I am author</button>
+        
+            <button class="btn indigo" type="submit">I am author</button>
+           
+        
     </form>
    
     <form action="/courses">
@@ -37,7 +41,7 @@
                     <p style="margin:1%;">Author: <i><b>You</b></i></p>
                 {{/ifeq}}
                 {{#ifNoteq userId._id @root.userId}}
-                    <p style="margin:1%;">Author: <i>{{author}}</i></p>
+                    <p style="margin:1%;">Author: <i>{{userId.name}}</i></p>
                 {{/ifNoteq}}
     
                 <p>Theme: {{theme}}</p>

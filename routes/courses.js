@@ -30,15 +30,14 @@ router.get('/', async (req, res) => {
         .populate('userId', 'email name')
         .select('price title img author theme')
 
-      /* } else if () { */
+      /* } else if ( ) { */
         
 
       } else {
       courses = await Course.find().lean()
         .populate('userId', 'email name')
-        .select('price title img author theme')
+        .select('price title img theme')
     }
-
 
     res.render('courses', {
       title: 'Courses',
@@ -54,6 +53,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const course = await Course.findById(req.params.id).lean()
+    
     res.render('course', {
       layout: 'empty',
       title: `Course ${course.title}`,

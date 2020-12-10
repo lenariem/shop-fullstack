@@ -81,7 +81,7 @@ nav ul a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 1% auto;
+  margin: 2% auto;
 }
 .course h1 {
   margin-bottom: 2rem;
