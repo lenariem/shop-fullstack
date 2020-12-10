@@ -5,20 +5,15 @@
         <button class="btn btn-primary">Show all Courses</button>
     </form>
     
+    {{#if @root.isAuth}}
     <form action="/courses">
         <button class="btn indigo">I am author</button>
         <input type="hidden" name="isMyCoursesSelected" value="true">
     </form>
+    {{/if}}
+    
 
-     {{!-- <form action="/courses?isMyCoursesSelected=true">
-        <p>
-        <label>
-            <input type="checkbox" />
-            <span>I am author</span>
-        </label>
-        </p>
-    </form> --}}
-   
+
     <form action="/courses">
         <div class="input-field">
             <input id="search" name="search" type="text" placeholder="Search" class="validate" max="30">
