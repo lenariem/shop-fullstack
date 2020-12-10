@@ -6,11 +6,18 @@
     </form>
     
     <form action="/courses">
-        
-            <button class="btn indigo" type="submit">I am author</button>
-           
-        
+        <button class="btn indigo">I am author</button>
+        <input type="hidden" name="isMyCoursesSelected" value="true">
     </form>
+
+     {{!-- <form action="/courses?isMyCoursesSelected=true">
+        <p>
+        <label>
+            <input type="checkbox" />
+            <span>I am author</span>
+        </label>
+        </p>
+    </form> --}}
    
     <form action="/courses">
         <div class="input-field">
@@ -21,7 +28,6 @@
                 <button type="submit">&#x1F50D;</button>
             </div>
         </div>
-        
     </form>
 </div>
 

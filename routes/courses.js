@@ -11,7 +11,10 @@ function isOwner(course, req) {
 
 
 router.get('/', async (req, res) => {
+  
   const searchTerm = req.query.search
+  const isMyCoursesSelected = req.query.isMyCoursesSelected
+  console.log("isMyCoursesSelected:" + isMyCoursesSelected)
   let courses
   
   try {
@@ -30,9 +33,19 @@ router.get('/', async (req, res) => {
         .populate('userId', 'email name')
         .select('price title img author theme')
 
-      /* } else if ( ) { */
-        
+    } else if (isMyCoursesSelected) { 
+      courses = await Course.find()      
+      .populate('userId', 'email name')
+      .select('price title img theme')
 
+      const myCourses =  courses.filter(course => {
+        console.log(course, "req.user._id:" + req.user._id)
+        return course.userId._id.toString() === req.user._id.toString()}
+        )
+        courses = myCourses
+        console.log(myCourses)
+        
+      
       } else {
       courses = await Course.find().lean()
         .populate('userId', 'email name')
