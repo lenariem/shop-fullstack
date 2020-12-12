@@ -20,6 +20,17 @@ nav ul a {
 .logo {
   width: 90px;
   margin-left: 30px;
+  transition: 0.5s all;
+}
+
+.logo:hover {
+    filter: saturate(300%)
+}
+
+@media(max-width: 1024px) {
+  .logo {
+    display: none;
+  }
 }
 
 .bg {
