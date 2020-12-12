@@ -3,6 +3,7 @@ const path = require('path')
 const csrf = require('csurf')
 const flash = require('connect-flash')
 const mongoose = require('mongoose')
+const helmet = require('helmet')
 const exphbs = require('express-handlebars')
 const Handlebars = require('handlebars')
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
@@ -69,6 +70,11 @@ app.use(csrf())
 
 //for error messages
 app.use(flash())
+
+//for security, manage headers
+app.use(helmet({
+  contentSecurityPolicy: false
+}))
 
 //my middleware
 app.use(varMiddleware)
