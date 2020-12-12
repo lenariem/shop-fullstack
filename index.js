@@ -4,6 +4,7 @@ const csrf = require('csurf')
 const flash = require('connect-flash')
 const mongoose = require('mongoose')
 const helmet = require('helmet')
+const compression = require('compression')
 const exphbs = require('express-handlebars')
 const Handlebars = require('handlebars')
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
@@ -75,6 +76,9 @@ app.use(flash())
 app.use(helmet({
   contentSecurityPolicy: false
 }))
+
+//compression 
+app.use(compression())
 
 //my middleware
 app.use(varMiddleware)
