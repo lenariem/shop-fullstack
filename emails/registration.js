@@ -6,10 +6,11 @@ module.exports = function (user_email) {
         from: keys.EMAIL_FROM,
         subject: 'Registration is successful. Your account is created',
         html: `
-            <h1>Welcome to our shop!</h1>
-            <p>You created account successfully with email - ${user_email}!</p>
+            <h1>Welcome to our platform!</h1>
+            <p>You have created account successfully with email - ${user_email}!</p>
+            <p>Have fun with "Owl"! </p>
             <hr />
-            <a href="${keys.BASE_URL}">Courses-shop</a>
+            <a href="${keys.BASE_URL}">Courses-shop-owl</a>
         `
     }
 

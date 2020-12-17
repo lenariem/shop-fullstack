@@ -1,12 +1,12 @@
 <h1 class="center-align">Courses</h1>
 
 <div class="searchPanel">
-    <form action="/courses">
+    <form action="/courses" class="search-form">
         <button class="btn btn-primary">Show all Courses</button>
     </form>
     
     {{#if @root.isAuth}}
-    <form action="/courses">
+    <form action="/courses" class="search-form">
         <button class="btn indigo">I am author</button>
         <input type="hidden" name="isMyCoursesSelected" value="true">
     </form>
@@ -29,11 +29,11 @@
 <div class="coursesContainer">
 {{#if courses.length}}
 {{#each courses}}
- <div class="row">
-    <div class="col">
+{{!--  <div class="row">
+    <div class="col"> --}}
         <div class="card">
             <div class="card-image">
-                <img src="{{img}}" alt="{{title}}" class="course-image">
+                <a href="/courses/{{_id}}" target="_blank"> <img src="{{img}}" alt="{{title}}" class="course-image"></a>
             </div>
             <div class="card-content">
                 <span class="card-title">{{title}}</span>
@@ -45,7 +45,7 @@
                     <p style="margin:1%;">Author: <i>{{userId.name}}</i></p>
                 {{/ifNoteq}}
     
-                <p>Theme: {{theme}}</p>
+                <p>Topic: {{theme}}</p>
             </div>
             <div class="card-action actions">
                 <a href="/courses/{{_id}}" target="_blank">Open</a>
@@ -66,8 +66,8 @@
                 {{/if}}
             </div>
         </div>
-    </div>
- </div>
+   {{!--  </div>
+ </div> --}}
 {{/each}}
 {{else}}
     <p>No courses yet</p>
