@@ -102,7 +102,7 @@ router.get('/reset', (req, res) => {
 router.get('/password/:token', async(req, res) => {
     if (!req.params.token) {
         //for security if token is absent redirect
-        return res.redirect('git addauth/login')
+        return res.redirect('auth/login')
     }
 
     try {
