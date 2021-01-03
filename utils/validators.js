@@ -4,8 +4,8 @@ const User = require('../models/user')
 exports.registerValidators = [
     body('name')
         .trim()
-        .isLength({min:2, max: 16})
-        .withMessage('Name should has at least two characters'),
+        .isLength({min:2, max: 30})
+        .withMessage('Name should have at least two characters and not more than 30'),
     body('email', 'Please, enter a valid email')
         .isEmail()
         .trim()
