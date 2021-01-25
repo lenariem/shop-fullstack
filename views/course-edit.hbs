@@ -26,14 +26,14 @@
 
   <div class="input-field">
     <input id="theme" name="theme" type="text" class="validate" required value="{{course.theme}}">
-    <label for="theme">Theme</label>
-    <span class="helper-text" data-error="Please, enter course theme"></span>
+    <label for="theme">Topic</label>
+    <span class="helper-text" data-error="Please, enter course topic"></span>
   </div>
 
   <input type="hidden" name="id" value="{{course._id}}">
   <input type="hidden" name="_csrf" value="{{csrf}}">
 
-  <button type="submit" class="btn btn-primary">EDIT</button>
+  <button type="submit" class="btn btn-primary">SAVE</button>
 </form>
 
 <form action="/courses/remove" method = "POST">

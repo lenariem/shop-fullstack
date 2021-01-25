@@ -44,7 +44,7 @@ exports.courseValidators = [
     body('img', 'Please enter a valid url')
         .isURL(),
     body('theme')
-        .isLength({min: 2}).withMessage('Theme is too short, please enter at least 2 characters')
-        .isLength({max: 80}).withMessage('Title is too long, please 80 characters maximum')
+        .isLength({min: 2}).withMessage('Topic is too short, please enter at least 2 characters')
+        .isLength({max: 80}).withMessage('Topic is too long, please 80 characters maximum')
 ]
 
