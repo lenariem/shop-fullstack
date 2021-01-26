@@ -3,16 +3,16 @@
 
 **to take a look please click this link:** 
 
-https://lenariem.github.io/movies-list-app_hooks/
+https://courses-shop-owl.herokuapp.com/
 
-To see all functionality please feel free to sign up. It is secure, nobody will be able to see your password or edit not own course or make an order with your credentials. 
+**To see all functionality please feel free to sign up.** It is secure, nobody will be able to see your password or edit not own course or make an order with your data. 
 
 ### Technologies used: 
-* Node.js/Express,
-* MongoDB/Mongoose,
-* JavaScript,
-* Handlebars, 
-* CSS,
+* Node.js/Express;
+* MongoDB/Mongoose;
+* JavaScript;
+* Handlebars;
+* CSS;
 * Heroku
 
 ### User can:
