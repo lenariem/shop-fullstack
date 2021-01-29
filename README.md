@@ -12,7 +12,9 @@ https://courses-shop-owl.herokuapp.com/
 * MongoDB/Mongoose;
 * JavaScript;
 * Handlebars;
+* Materialize;
 * CSS;
+* For Security: Helmet(to protect headers), CSURF(token), authentication middleware, bcrypt(password);
 * Heroku
 
 ### User can:
