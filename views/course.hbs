@@ -8,12 +8,19 @@
     <p class="price big">{{course.price}}</p>
 
     <div class="course-btns" >
-         
-        <form action="/cart/add" method="POST">
+         {{#ifeq userId._id @root.userId}}
+            <form action="/cart/add" method="POST">
                 <input type="hidden" name="_csrf" value="{{@root.csrf}}">       
                 <input type="hidden" name="id" value="{{course._id}}">
                 <button type="submit" class="btn btn-primary">Buy</button>
-        </form>
+            </form>
+        {{/ifeq}}
+
+        {{#ifNoteq userId._id @root.userId}}
+            <button type="submit" class="btn btn-primary">Log in to buy</button>
+        {{/ifNoteq}}
+
+        
 
         <form action="/courses" class="course-back-btn">
             <button type="submit" class="waves-effect waves-light btn indigo">&larr; Back to all courses page</button>
