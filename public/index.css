@@ -35,7 +35,7 @@ nav ul a {
 
 .bg {
   display: block;
-  width: 30%;
+  width: 25%;
   margin: 0 auto;
 }
 
@@ -139,6 +139,30 @@ nav ul a {
 
 .course-form {
   margin-bottom: 2rem;
+}
+
+/* course */
+.course-close {
+  margin-left: 60%;
+  border-radius: 100%;
+  cursor: pointer;
+  background-color: rgba(255, 17, 17, 0.575);
+  transition: 0.4s all;
+}
+.course-close:hover {
+  transform: scale(1.2);
+}
+
+.course-img {
+  width: 65%;
+}
+
+.course-btns {
+  display: flex;
+}
+
+.course-back-btn {
+  margin-left: 5%;
 }
 
 /* orders */
