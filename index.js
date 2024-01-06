@@ -16,6 +16,20 @@ const MongoStore = require("connect-mongodb-session")(session);
 const keys = require("./keys");
 const PORT = process.env.PORT || 3000;
 
+//connection to DB
+async function connectDB() {
+  try {
+      await mongoose.connect(keys.MONGODB_URI, {
+          useUnifiedTopology: true,
+          useNewUrlParser: true,
+          useFindAndModify: false,
+      });
+      console.log(`Connected to DB successfully`);
+  } catch (err) {
+      console.log(err);
+  }
+}
+
 const homeRoutes = require("./routes/home");
 const addRoutes = require("./routes/add");
 const coursesRoutes = require("./routes/courses");
@@ -89,20 +103,6 @@ app.use(compression());
 app.use(varMiddleware);
 app.use(userMiddleware);
 
-//connection to DB
-async function connectDB() {
-    try {
-        await mongoose.connect(keys.MONGODB_URI, {
-            useUnifiedTopology: true,
-            useNewUrlParser: true,
-            useFindAndModify: false,
-        });
-        console.log(`Connected to DB successfully`);
-    } catch (err) {
-        console.log(err);
-    }
-}
-
 //ROUTES
 app.use("/", homeRoutes);
 app.use("/add", addRoutes);
@@ -117,15 +117,14 @@ app.use(errorMiddleware);
 
 // connection to port after connected to DB
 async function start() {
-    try {
-        connectDB().then(() => {
-            app.listen(PORT, () => {
-                console.log(`Server is running on port ${PORT}`);
-            });
-        });
-    } catch (err) {
-        console.log(err);
-    }
+  try {
+      await connectDB();
+      app.listen(PORT, () => {
+          console.log(`Server is running on port ${PORT}`);
+      });
+  } catch (err) {
+      console.log(err);
+  }
 }
 
 start();
