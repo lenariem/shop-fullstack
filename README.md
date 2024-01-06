@@ -3,7 +3,7 @@
 
 **to take a look please click this link:** 
 
-https://courses-shop-owl.herokuapp.com/
+https://courses-shop-owl.cyclic.app/
 
 **To see all functionality please feel free to sign up.** 
 
@@ -15,7 +15,7 @@ https://courses-shop-owl.herokuapp.com/
 * Materialize;
 * CSS;
 * For Security: Helmet(to protect headers), CSURF(token), authentication middleware, bcrypt(password);
-* Heroku
+* Cyclic
 
 ### User can:
 * sign up and recovery password if forgot;
