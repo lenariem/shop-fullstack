@@ -13,7 +13,7 @@ const {
 const session = require("express-session");
 const MongoStore = require("connect-mongodb-session")(session);
 
-const keys = require("./keys");
+const keys = require("./keys.prod");
 const PORT = process.env.PORT || 3000;
 
 //connection to DB
